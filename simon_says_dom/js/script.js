@@ -26,7 +26,7 @@ setTimeout(function(){
     numbers.classList.add('d-none')
     message.classList.add('d-none')
     numbImputs.classList.remove('d-none')
-},3000)
+},30000)
 
 //aggiungi interazione con il submit del form
 const inputEl = document.querySelectorAll('#input-group input');
