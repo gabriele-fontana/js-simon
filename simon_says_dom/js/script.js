@@ -8,7 +8,16 @@ numbers.innerHTML = `
     <li>${Math.floor(Math.random() * 50)}</li>
     <li>${Math.floor(Math.random() * 50)}</li>
 `;
- 
+//crea array con numeri generati casualmente
+const listItems = document.querySelectorAll('#numbers-list li'); /* seleziona tutti gli <li> */
+const randomNumb =[]
+for (let i = 0; i < listItems.length; i++) {
+    const numb = parseInt(listItems[i].innerText);
+    randomNumb.push(numb)
+    
+}
+console.log(randomNumb);
+
 //nascondere i numeri e il messaggio dopo 30 secondi
 //mostrare il form dopo 30 secondi
 const numbImputs = document.getElementById('answers-form')
@@ -21,6 +30,8 @@ setTimeout(function(){
 
 //aggiungi interazione con il submit del form
 const inputEl = document.querySelectorAll('#input-group input');
+
+
 numbImputs.addEventListener('submit', function(){
     event.preventDefault() //blocca il refresh della pagina al submit
     let UserNumbers = []; /* array vuoto per contenere i numeri inseriti dall'utente */    
