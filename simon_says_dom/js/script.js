@@ -36,19 +36,24 @@ numbImputs.addEventListener('submit', function(){
     event.preventDefault() //blocca il refresh della pagina al submit
     let UserNumbers = []; /* array vuoto per contenere i numeri inseriti dall'utente */    
     let correctAnswers =[];/* array vuoto per contenere le risposte esatte */
-    
+    const resultMessage = document.getElementById('message');
     for (let i = 0; i < inputEl.length; i++) {
         const value = parseInt(inputEl[i].value);
         
+         //validation
+        if(UserNumbers.includes(value)){
+            resultMessage.innerText = `ERRORE! Hai inserito più volte ${value}`
+            return 
+        }
         /* inserisci i numeri nell'array vuoto */
         UserNumbers.push(value);
-
-     //confronto usando includes
-     if (randomNumb.includes(value)){
+     
+        //confronto usando includes
+        if (randomNumb.includes(value)){
         correctAnswers.push(value)
      }
     }
     // Mostriamo il risultato finale nel paragrafo sotto il bottone
-    const resultMessage = document.getElementById('message');
+    
     resultMessage.innerText = `Hai indovinato ${correctAnswers.length} numeri! (${correctAnswers.join(', ')})`;
 })
