@@ -35,11 +35,20 @@ const inputEl = document.querySelectorAll('#input-group input');
 numbImputs.addEventListener('submit', function(){
     event.preventDefault() //blocca il refresh della pagina al submit
     let UserNumbers = []; /* array vuoto per contenere i numeri inseriti dall'utente */    
+    let correctAnswers =[];/* array vuoto per contenere le risposte esatte */
+    
     for (let i = 0; i < inputEl.length; i++) {
         const value = parseInt(inputEl[i].value);
-        UserNumbers.push(value);
         
-    }/* inserisci i numeri nell'array vuoto */
-    console.log(UserNumbers);
-    
+        /* inserisci i numeri nell'array vuoto */
+        UserNumbers.push(value);
+
+     //confronto usando includes
+     if (randomNumb.includes(value)){
+        correctAnswers.push(value)
+     }
+    }
+    // Mostriamo il risultato finale nel paragrafo sotto il bottone
+    const resultMessage = document.getElementById('message');
+    resultMessage.innerText = `Hai indovinato ${correctAnswers.length} numeri! (${correctAnswers.join(', ')})`;
 })
