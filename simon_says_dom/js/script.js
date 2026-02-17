@@ -26,8 +26,15 @@ setTimeout(function(){
     numbers.classList.add('d-none')
     message.classList.add('d-none')
     numbImputs.classList.remove('d-none')
+    timer.classList.add('d-none')
 },30000)
-
+//visualizza timer di 30 secondi
+const timer = document.getElementById('countdown')
+let seconds = 30
+setInterval(function() {
+    seconds--
+    timer.innerText = seconds
+},1000)
 //aggiungi interazione con il submit del form
 const inputEl = document.querySelectorAll('#input-group input');
 
