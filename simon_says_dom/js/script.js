@@ -1,23 +1,22 @@
-//mostrare 5 numeri in pagina
-const numbers = document.getElementById('numbers-list')
-
-numbers.innerHTML = `
-    <li>${Math.floor(Math.random() * 50)}</li>
-    <li>${Math.floor(Math.random() * 50)}</li>
-    <li>${Math.floor(Math.random() * 50)}</li>
-    <li>${Math.floor(Math.random() * 50)}</li>
-    <li>${Math.floor(Math.random() * 50)}</li>
-`;
 //crea array con numeri generati casualmente
-const listItems = document.querySelectorAll('#numbers-list li'); /* seleziona tutti gli <li> */
 const randomNumb =[]
-for (let i = 0; i < listItems.length; i++) {
-    const numb = parseInt(listItems[i].innerText);
-    randomNumb.push(numb)
+while (randomNumb.length < 5) {
+    let newNumb = getRandomNumber();
     
+    if(!randomNumb.includes(newNumb)){
+        randomNumb.push(newNumb)
+    }
 }
 console.log(randomNumb);
 
+//mostrare 5 numeri in pagina
+const numbers = document.getElementById('numbers-list')
+for (let index = 0; index < randomNumb.length; index++) {
+    const li = document.createElement('li');
+    li.innerText = randomNumb[index];
+    numbers.append(li)
+    
+}
 //nascondere i numeri e il messaggio dopo 30 secondi
 //mostrare il form dopo 30 secondi
 const numbImputs = document.getElementById('answers-form')
